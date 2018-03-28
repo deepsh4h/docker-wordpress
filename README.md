@@ -22,14 +22,14 @@ Username: admin
 Password: fY7GjKSOlBHI0C*o!tinGJOz
 ```
 
-# Backing up the database
+## Backing up the database
 
-## Backup
+### Backup
 ```
 docker exec CONTAINER /usr/bin/mysqldump -u root --password=root -B wordpress > wordpress.sql
 ```
 
-## Restore (If you do want to restore manually when docker is already running or else docker compose does restore it for you)
+### Restore (If you do want to restore manually when docker is already running or else docker compose does restore it for you)
 ```
 cat wordpress.sql | docker exec -i CONTAINER /usr/bin/mysql -u root --password=root wordpress
 ```
