@@ -1,0 +1,30 @@
+version: '2'
+services:
+  wordpress:
+    depends_on:
+      - db
+    restart: always
+    build:
+        context: .
+        dockerfile: wordpress.Dockerfile
+    image: wordpress-custom
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_PASSWORD: nipiwebrep
+    ports:
+      - 80:80 # Expose http and https
+      - 443:443
+    networks:
+      - back
+  db:
+    restart: always
+    build:
+        context: .
+        dockerfile: mysql.Dockerfile
+    image: mysql-custom
+    environment:
+      MYSQL_ROOT_PASSWORD: nipiwebrep
+    networks:
+      - back
+networks:
+  back:
