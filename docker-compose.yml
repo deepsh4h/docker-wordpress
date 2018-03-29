@@ -26,5 +26,15 @@ services:
       MYSQL_ROOT_PASSWORD: nipiwebrep
     networks:
       - back
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+        - 8181:80
+    environment:
+        PMA_HOST: db:3306
+        MYSQL_USERNAME: root
+        MYSQL_ROOT_PASSWORD: nipiwebrep
+    networks:
+      - back
 networks:
   back:
